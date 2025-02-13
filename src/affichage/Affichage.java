@@ -13,7 +13,7 @@ public class Affichage {
 		return sca.next();
 	}
 	
-	void main() {
+	public void main(String[] args) {
 		
 	}
 }
