@@ -2,12 +2,12 @@ package jeu;
 
 public class Joueur {
 	private String nom;
-	private int popularite=0;
-	private int vie=5;
-	private Carte[]main=new Carte[5];
-	
+	private int popularite = 0;
+	private int vie = 5;
+	private Carte[] main = new Carte[5];
+
 	public Joueur(String nom) {
-		this.nom=nom;
+		this.nom = nom;
 	}
 
 	public String getNom() {
@@ -34,9 +34,12 @@ public class Joueur {
 		return main;
 	}
 
-	public void setMain(int indice,Carte carte) {
+	public void setMain(int indice, Carte carte) {
 		this.main[indice] = carte;
 	}
-	
-	
+
+	public Boolean estVivant() {
+		return this.getVie() <= 0;
+	}
+
 }

@@ -1,18 +1,19 @@
 package jeu;
 
 //xixhoj-3Botsi-xekjeg
+//cuggaN-7jigwu-wygwad
 
 public class Carte {
 	private String nom;
 	private String description;
-	private int modif_popularite;
-	private int modif_vie;
+	private int modifPopularite;
+	private int modifVie;
 	
-	public Carte(String nom,String description, int modif_popularite, int modif_vie) {
+	public Carte(String nom,String description, int modifPopularite, int modifVie) {
 		this.nom=nom;
 		this.description=description;
-		this.modif_popularite=modif_popularite;
-		this.modif_vie=modif_vie;
+		this.modifPopularite=modifPopularite;
+		this.modifVie=modifVie;
 	}
 
 	public String getNom() {
@@ -23,24 +24,20 @@ public class Carte {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public int getModifPopularite() {
+		return modifPopularite;
 	}
 
-	public int getModif_popularite() {
-		return modif_popularite;
+	public void setModifPopularite(int modifPopularite) {
+		this.modifPopularite = modifPopularite;
 	}
 
-	public void setModif_popularite(int modif_popularite) {
-		this.modif_popularite = modif_popularite;
+	public int getModifVie() {
+		return modifVie;
 	}
 
-	public int getModif_vie() {
-		return modif_vie;
-	}
-
-	public void setModif_vie(int modif_vie) {
-		this.modif_vie = modif_vie;
+	public void setModifVie(int modifVie) {
+		this.modifVie = modifVie;
 	}
 	
 	

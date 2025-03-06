@@ -51,8 +51,9 @@ public class Affichage {
         }
         return choix - 1;
     }
-    ///_______________________________________________________________
 
+
+    //Pas dans l'interface
     public static void retirerCarte(String[][] main, int index) {
         if (index >= 0 && index < main.length) {
             main[index] = null;
@@ -76,7 +77,6 @@ public class Affichage {
             }
         }
     }
-
     public static void initialiserPioche(List<String[]> pioche) {
         pioche.add(new String[]{"Attaque", "Attaque du bateau ennemi, +2 pop, -2 pv", "2", "-2"});
         pioche.add(new String[]{"Mutinerie", "Une révolte éclate à bord ! -3 pop, -4 pv", "-3", "-4"});
