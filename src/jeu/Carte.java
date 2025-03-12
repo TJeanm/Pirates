@@ -3,17 +3,15 @@ package jeu;
 //xixhoj-3Botsi-xekjeg
 //cuggaN-7jigwu-wygwad
 
-public class Carte {
+public abstract class Carte {
 	private String nom;
 	private String description;
-	private int modifPopularite;
-	private int modifVie;
+	private TypeCarte type;
 	
-	public Carte(String nom,String description, int modifPopularite, int modifVie) {
+	protected Carte(String nom,String description, TypeCarte type) {
 		this.nom=nom;
 		this.description=description;
-		this.modifPopularite=modifPopularite;
-		this.modifVie=modifVie;
+		this.type=type;
 	}
 
 	public String getNom() {
@@ -24,21 +22,10 @@ public class Carte {
 		return description;
 	}
 
-	public int getModifPopularite() {
-		return modifPopularite;
-	}
-
-	public void setModifPopularite(int modifPopularite) {
-		this.modifPopularite = modifPopularite;
-	}
-
-	public int getModifVie() {
-		return modifVie;
-	}
-
-	public void setModifVie(int modifVie) {
-		this.modifVie = modifVie;
+	public TypeCarte getType() {
+		return type;
 	}
 	
+	public abstract void appliquerEffet(Joueur currentPlayer, Joueur opponent);
 	
 }

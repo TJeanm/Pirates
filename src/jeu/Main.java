@@ -4,13 +4,19 @@ import affichage.Affichage;
 
 public class Main {
 	
-	private Carte carte1;
-	private Carte carte2;
-	private Carte carte3;
-	private Carte carte4;
-	private Carte carte5;
+	private Carte [] cartes = new Carte [5];
 
 	public static void main(String[] args) {
 		Affichage affichage = Jeu.getAffichage();
 	}
+
+	public Carte getCartes(int indice) {
+		return cartes[indice];
+	}
+
+	public void setCartes(Carte carte,int indice) {
+		cartes[indice]=carte;
+	}
+	
+	
 }

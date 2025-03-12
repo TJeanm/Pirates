@@ -4,7 +4,7 @@ public class Joueur {
 	private String nom;
 	private int popularite = 0;
 	private int vie = 5;
-	private Carte[] main = new Carte[5];
+	private Main main;
 
 	public Joueur(String nom) {
 		this.nom = nom;
@@ -30,12 +30,12 @@ public class Joueur {
 		this.vie += vie;
 	}
 
-	public Carte[] getMain() {
+	public Main getMain() {
 		return main;
 	}
 
 	public void setMain(int indice, Carte carte) {
-		this.main[indice] = carte;
+		main.setCartes(carte,indice);
 	}
 
 	public Boolean estVivant() {
