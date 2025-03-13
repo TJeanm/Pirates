@@ -8,12 +8,12 @@ public class CartePopularite extends Carte{
 		this.popularite = popularite;
 	}
 
-	public int getpopularite() {
+	public int getPopularite() {
 		return popularite;
 	}
 
 	@Override
 	public void appliquerEffet(Joueur joueur, Joueur adversaire) {
-		joueur.setPopularite(popularite);
+		joueur.augmenterPopularite(popularite);
 	}
 }

@@ -10,11 +10,11 @@ public class Main {
 		Affichage affichage = Jeu.getAffichage();
 	}
 
-	public Carte getCartes(int indice) {
+	public Carte getCarte(int indice) {
 		return cartes[indice];
 	}
 
-	public void setCartes(Carte carte,int indice) {
+	public void setCarte(Carte carte,int indice) {
 		cartes[indice]=carte;
 	}
 	

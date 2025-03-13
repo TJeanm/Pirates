@@ -1,17 +1,21 @@
 package affichage;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
+
 import java.util.Scanner;
 
-public class Affichage {
+import jeu.Carte;
+import jeu.CarteAttaque;
+import jeu.CartePopularite;
+import jeu.Joueur;
+
+public class Affichage implements IAffichage {
 
     private Scanner scanner = new Scanner(System.in);
 
 
     public void afficherBienvenue() {
-        System.out.println("Bienvenue dans le jeu des pirates");
+        System.out.println("Bienvenue dans le jeu des pirates\n");
     }
 
     public String demanderNomJoueur(String numeroJoueur) {
@@ -22,17 +26,20 @@ public class Affichage {
     public void distribuerCartes() {
         System.out.println("\nDistribution des cartes...");
     }
+    
+    public void debutJeu() {
+        System.out.println("\nDébut du jeu !");
+    }
 
-    public void afficherMainJoueur(String joueur, String[][] main) {
+    public void afficherMainJoueur(Joueur joueur) {
         System.out.println("\nMain de " + joueur + " :");
-        for (int i = 0; i < main.length; i++) {
-            if (main[i] != null) {
-                System.out.println("Carte " + (i + 1) + " : " + main[i][0]);
-                System.out.println("   Description : " + main[i][1]);
-                System.out.println("   Popularité : " + main[i][2]);
-                System.out.println("   Points de vie : " + main[i][3]);
-            }
+        for (int i = 0; i < 5; i++) {
+        	System.out.println("\nCarte "+i+1+ " : " + joueur.getNomCarteMain(i) + " :");
         }
+    }
+    
+    public void afficherTour(String joueur) {
+    	System.out.println("\nAu tour de "+joueur+"\n");
     }
 
     public int choisirCarte() {
@@ -51,97 +58,28 @@ public class Affichage {
         }
         return choix - 1;
     }
-
-
-    //Pas dans l'interface
-    public static void retirerCarte(String[][] main, int index) {
-        if (index >= 0 && index < main.length) {
-            main[index] = null;
-        }
-    }
-
-    public static String[] piocherCarte(List<String[]> pioche) {
-        if (!pioche.isEmpty()) {
-            return pioche.remove((int) (Math.random() * pioche.size()));
-        } else {
-            return new String[]{"Aucune carte", "La pioche est vide", "0", "0"};
-        }
-    }
-
-    public static void ajouterCarteDansMain(String[][] main, List<String[]> pioche) {
-        for (int i = 0; i < main.length; i++) {
-            if (main[i] == null) {
-                System.out.println("Vous allez piocher une nouvelle carte !");
-                main[i] = piocherCarte(pioche);
-                break;
-            }
-        }
-    }
-    public static void initialiserPioche(List<String[]> pioche) {
-        pioche.add(new String[]{"Attaque", "Attaque du bateau ennemi, +2 pop, -2 pv", "2", "-2"});
-        pioche.add(new String[]{"Mutinerie", "Une révolte éclate à bord ! -3 pop, -4 pv", "-3", "-4"});
-        pioche.add(new String[]{"Défense", "Renforce le navire, +1 pop, +3 pv", "1", "3"});
-        pioche.add(new String[]{"Fête", "Les marins célèbrent une victoire, +4 pop, +2 pv", "4", "2"});
-        pioche.add(new String[]{"Pillage", "Vol d'un navire ennemi, +5 pop, -3 pv", "5", "-3"});
-        pioche.add(new String[]{"Tempête", "Une énorme tempête frappe, -3 pop, -5 pv", "-3", "-5"});
-        pioche.add(new String[]{"Trésor", "Vous trouvez un trésor caché, +6 pop, +2 pv", "6", "2"});
-        pioche.add(new String[]{"Sabotage", "Un espion sabote votre navire, -4 pop, -3 pv", "-4", "-3"});
-        pioche.add(new String[]{"Renforts", "Des alliés viennent vous aider, +3 pop, +4 pv", "3", "4"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions, +2 pop, +3 pv", "2", "3"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions 5, +2 pop, +3 pv", "2", "3"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions 9, +2 pop, +3 pv", "2", "3"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions 0, +2 pop, +3 pv", "2", "3"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions 4, +2 pop, +3 pv", "2", "3"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions 3, +2 pop, +3 pv", "2", "3"});
-        pioche.add(new String[]{"Ravitaillement", "Vous recevez des provisions 8, +2 pop, +3 pv", "2", "3"});
-        Collections.shuffle(pioche);
-    }
-
-
-
-    public String[][] creerMainJoueur(List<String[]> pioche) {
-        String[][] main = new String[5][4];
-        for (int i = 0; i < 5; i++) {
-            main[i] = piocherCarte(pioche);
-        }
-        return main;
+    
+    public void cartePopularite(Carte carte) {
+    	System.out.println("Vous avez choisi la carte "+carte.getNom()+" : "+carte.getDescription()+". Votre popularité à augmenté de ;"+ carte.getPopularite()+"\n");
     }
     
-    public static void main(String[] args) {
-
-        List<String[]> pioche = new ArrayList<>();
-        initialiserPioche(pioche);
-        Affichage view = new Affichage();
-
-        view.afficherBienvenue();
-        String joueur1 = view.demanderNomJoueur("1");
-        String joueur2 = view.demanderNomJoueur("2");
-
-        view.distribuerCartes();
-
-        String[][] mainJoueur1 = view.creerMainJoueur(pioche);
-        String[][] mainJoueur2 = view.creerMainJoueur(pioche);
-
-        view.afficherMainJoueur(joueur1, mainJoueur1);
-        view.afficherMainJoueur(joueur2, mainJoueur2);
-
-        for (int tour = 0; tour < 5; tour++) {
-            System.out.println("\n" + joueur1 + ", c'est à toi de jouer !");
-            int choix1 = view.choisirCarte();
-            System.out.println("Tu as choisi la carte : " + mainJoueur1[choix1][0]);
-            view.retirerCarte(mainJoueur1, choix1);
-            view.ajouterCarteDansMain(mainJoueur1,pioche);
-            view.afficherMainJoueur(joueur1, mainJoueur1);
-
-            System.out.println("\n" + joueur2 + ", c'est à toi de jouer !");
-            int choix2 = view.choisirCarte();
-            System.out.println("Tu as choisi la carte : " + mainJoueur2[choix2][0]);
-            view.retirerCarte(mainJoueur2, choix2);
-            view.ajouterCarteDansMain(mainJoueur2,pioche);
-            view.afficherMainJoueur(joueur2, mainJoueur2);
-        }
-
-
-        
+    public void carteAttaque(Carte carte) {
+    	System.out.println("Vous avez choisi la carte "+carte.getNom()+" : "+carte.getDescription()+". Votre popularité à augmenté de ;"+ carte.getDegqt()+"\n");
     }
+    
+    public void afficherEtatJeu(Joueur joueur1,Joueur joueur2) {
+    	System.out.println("Etat acuel du jeu : \n");
+    	System.out.println(joueur1.getNom()+" : Vie : "+joueur1.getVie()+" points de vie, Popularite : "+joueur1.getPopularite()+" points de popularite\n");
+    	System.out.println(joueur2.getNom()+" : Vie : "+joueur2.getVie()+" points de vie, Popularite : "+joueur2.getPopularite()+" points de popularite\n");
+    }
+    
+    public void vainqueur(Joueur joueur) {
+    	System.out.println("Fin du jeu, vainqueur : "+joueur.getNom());
+    }
+    
+    public void afficherCarte(Carte carte) {
+    	System.out.println("Vous avez pioché la carte "+carte.getNom()+" : "+carte.getDescription()); 
+    }
+    
+    
 }

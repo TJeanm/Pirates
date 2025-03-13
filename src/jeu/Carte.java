@@ -1,7 +1,5 @@
 package jeu;
 
-//xixhoj-3Botsi-xekjeg
-//cuggaN-7jigwu-wygwad
 
 public abstract class Carte {
 	private String nom;
@@ -27,5 +25,9 @@ public abstract class Carte {
 	}
 	
 	public abstract void appliquerEffet(Joueur currentPlayer, Joueur opponent);
+
+	public abstract String getPopularite();
+
+	public abstract String getDegqt();
 	
 }

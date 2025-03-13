@@ -8,12 +8,12 @@ public class CarteAttaque extends Carte {
 			this.degat = degat;
 		}
 
-		public int getdegat() {
+		public int getDegat() {
 			return degat;
 		}
 
 		@Override
 		public void appliquerEffet(Joueur joueur, Joueur adversaire) {
-			adversaire.setVie(-degat);
+			adversaire.diminuerVie(degat);
 		}
 }
