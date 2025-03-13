@@ -7,8 +7,9 @@ public class CarteAttaque extends Carte {
 			super(nom, description, TypeCarte.ATTAQUE);
 			this.degat = degat;
 		}
-
-		public int getDegat() {
+		
+		@Override
+		public int getEffet() {
 			return degat;
 		}
 

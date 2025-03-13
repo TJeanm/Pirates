@@ -8,7 +8,8 @@ public class CartePopularite extends Carte{
 		this.popularite = popularite;
 	}
 
-	public int getPopularite() {
+	@Override
+	public int getEffet() {
 		return popularite;
 	}
 

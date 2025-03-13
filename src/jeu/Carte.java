@@ -26,8 +26,6 @@ public abstract class Carte {
 	
 	public abstract void appliquerEffet(Joueur currentPlayer, Joueur opponent);
 
-	public abstract String getPopularite();
+	public abstract int getEffet();
 
-	public abstract String getDegqt();
-	
 }

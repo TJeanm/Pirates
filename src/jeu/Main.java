@@ -6,9 +6,7 @@ public class Main {
 	
 	private Carte [] cartes = new Carte [5];
 
-	public static void main(String[] args) {
-		Affichage affichage = Jeu.getAffichage();
-	}
+
 
 	public Carte getCarte(int indice) {
 		return cartes[indice];

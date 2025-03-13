@@ -1,7 +1,6 @@
 package affichage;
 
 
-
 import java.util.Scanner;
 
 import jeu.Carte;
@@ -60,11 +59,11 @@ public class Affichage implements IAffichage {
     }
     
     public void cartePopularite(Carte carte) {
-    	System.out.println("Vous avez choisi la carte "+carte.getNom()+" : "+carte.getDescription()+". Votre popularité à augmenté de ;"+ carte.getPopularite()+"\n");
+    	System.out.println("Vous avez choisi la carte "+carte.getNom()+" : "+carte.getDescription()+". Votre popularité à augmenté de ;"+ carte.getEffet()+"\n");
     }
     
     public void carteAttaque(Carte carte) {
-    	System.out.println("Vous avez choisi la carte "+carte.getNom()+" : "+carte.getDescription()+". Votre popularité à augmenté de ;"+ carte.getDegqt()+"\n");
+    	System.out.println("Vous avez choisi la carte "+carte.getNom()+" : "+carte.getDescription()+". Votre popularité à augmenté de ;"+ carte.getEffet()+"\n");
     }
     
     public void afficherEtatJeu(Joueur joueur1,Joueur joueur2) {
@@ -80,6 +79,10 @@ public class Affichage implements IAffichage {
     public void afficherCarte(Carte carte) {
     	System.out.println("Vous avez pioché la carte "+carte.getNom()+" : "+carte.getDescription()); 
     }
+    
+    public static void main(String[] args) {
+		//
+	}
     
     
 }
