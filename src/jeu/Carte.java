@@ -1,15 +1,14 @@
 package jeu;
 
-
 public abstract class Carte {
 	private String nom;
 	private String description;
 	private TypeCarte type;
-	
-	protected Carte(String nom,String description, TypeCarte type) {
-		this.nom=nom;
-		this.description=description;
-		this.type=type;
+
+	protected Carte(String nom, String description, TypeCarte type) {
+		this.nom = nom;
+		this.description = description;
+		this.type = type;
 	}
 
 	public String getNom() {
@@ -23,7 +22,7 @@ public abstract class Carte {
 	public TypeCarte getType() {
 		return type;
 	}
-	
+
 	public abstract void appliquerEffet(Joueur currentPlayer, Joueur opponent);
 
 	public abstract int getEffet();

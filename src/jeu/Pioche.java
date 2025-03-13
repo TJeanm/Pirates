@@ -1,32 +1,33 @@
 package jeu;
 
 public class Pioche {
-	private Carte[] cartes = new Carte[22];
+	private Carte[] cartes = new Carte[18];
 	private int indexe = 0;
+
 	public Pioche() {
 		initializePioche();
 	}
 
 	private void initializePioche() {
-		cartes = new Carte[22];
-		int idx = 0;
-		cartes[idx++] = new CartePopularite("Discours Inspirant", "Gagne en popularit√©.", 1);
-		cartes[idx++] = new CartePopularite("R√©volte Organis√©e", "Gagne en popularit√©.", 1);
-		cartes[idx++] = new CartePopularite("Abordage R√©ussi", "Gagne beaucoup de popularit√©.", 2);
-		cartes[idx++] = new CartePopularite("Poing de Fer", "Gagne en popularit√©.", 2);
-		for (int i = 0; i < 3; i++) {
-			cartes[idx++] = new CartePopularite("Discours Inspirant", "Gagne en popularit√©.", 1);
-			cartes[idx++] = new CartePopularite("R√©volte Organis√©e", "Gagne en popularit√©.", 1);
-			cartes[idx++] = new CartePopularite("Abordage R√©ussi", "Gagne beaucoup de popularit√©.", 2);
-			cartes[idx++] = new CartePopularite("Poing de Fer", "Gagne en popularit√©.", 2);
-		}
-		cartes[idx++] = new CarteAttaque("Frappe de Sabre", "Inflige des d√©g√¢ts √† l'adversaire.", 2);
-		cartes[idx++] = new CarteAttaque("Explosion de Canon", "Inflige de lourds d√©g√¢ts √† l'adversaire.", 3);
-		for (int i = 0; i < 2; i++) {
-			cartes[idx++] = new CarteAttaque("Frappe de Sabre", "Inflige des d√©g√¢ts √† l'adversaire.", 2);
-			cartes[idx++] = new CarteAttaque("Explosion de Canon", "Inflige de lourds d√©g√¢ts √† l'adversaire.", 3);
-		}
-
+		cartes = new Carte[18];
+		int indice = 0;
+		cartes[indice++] = new CarteAttaque("Frappe de Sabre", "Inflige 1 de dÈg‚t ‡† l'adversaire.", 1);
+		cartes[indice++] = new CartePopularite("Discours Inspirant", "Gagne 1 de popularitÈ.", 1);
+		cartes[indice++] = new CartePopularite("Mutinerie", "Gagne 1 de popularitÈ.", 1);
+		cartes[indice++] = new CarteAttaque("Explosion de Canon", "Inflige 2 de dÈg‚ts ‡† l'adversaire.", 2);
+		cartes[indice++] = new CarteAttaque("Duel au revolver", "Inflige 3 de dÈg‚ts ‡† l'adversaire.", 3);
+		cartes[indice++] = new CartePopularite("Abordage RÈussi", "Gagne 2 de popularitÈ.", 2);
+		cartes[indice++] = new CartePopularite("Partager trÈsor", "Gagne 3 de popularitÈ.", 3);
+		cartes[indice++] = new CarteAttaque("Frappe de Sabre", "Inflige 1 de dÈg‚t ‡† l'adversaire.", 1);
+		cartes[indice++] = new CartePopularite("Mutinerie", "Gagne 1 de popularitÈ.", 1);
+		cartes[indice++] = new CarteAttaque("Explosion de Canon", "Inflige 2 de dÈg‚ts ‡† l'adversaire.", 2);
+		cartes[indice++] = new CartePopularite("Abordage RÈussi", "Gagne 2 de popularitÈ.", 2);
+		cartes[indice++] = new CarteAttaque("Duel au revolver", "Inflige 3 de dÈg‚ts ‡† l'adversaire.", 3);
+		cartes[indice++] = new CartePopularite("Partager trÈsor", "Gagne 3 de popularitÈ.", 3);
+		cartes[indice++] = new CarteAttaque("Explosion de Canon", "Inflige 2 de dÈg‚ts ‡† l'adversaire.", 2);
+		cartes[indice++] = new CarteAttaque("Frappe de Sabre", "Inflige 1 de dÈg‚t ‡† l'adversaire.", 1);
+		cartes[indice++] = new CartePopularite("Mutinerie", "Gagne 1 de popularitÈ.", 1);
+		cartes[indice++] = new CartePopularite("Abordage RÈussi", "Gagne 2 de popularitÈ.", 2);
 	}
 
 	public Carte piocherCarte() {

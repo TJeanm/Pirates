@@ -1,6 +1,6 @@
 package jeu;
 
-public class CartePopularite extends Carte{
+public class CartePopularite extends Carte {
 	private int popularite;
 
 	public CartePopularite(String nom, String description, int popularite) {

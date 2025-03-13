@@ -1,8 +1,7 @@
 package affichage;
 
 import jeu.Carte;
-import jeu.CarteAttaque;
-import jeu.CartePopularite;
+
 import jeu.Joueur;
 
 public interface IAffichage {

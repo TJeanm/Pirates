@@ -4,7 +4,7 @@ public class Joueur {
 	private String nom;
 	private int popularite = 0;
 	private int vie = 5;
-	private Main main;
+	private Main main=new Main();
 	private Carte[] zonePopularite=new Carte[20];
 	private int tailleZonePopularite=0;
 
@@ -41,6 +41,11 @@ public class Joueur {
 	
 	public Carte getCarteMain(int indice) {
 		return main.getCarte(indice);
+	}
+	
+	public String getDescriptionCarteMain(int indice) {
+		Carte carte= main.getCarte(indice);
+		return carte.getDescription();
 	}
 	
 	public String getNomCarteMain(int indice) {

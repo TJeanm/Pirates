@@ -24,29 +24,31 @@ public class Lanceur {
 
 		while (!jeu.partieTerminee()) {
 
-			Joueur actif= jeu.getJoueurActif();
+			Joueur actif = jeu.getJoueurActif();
 			Joueur adversaire = jeu.getAdversaire();
-			
+
 			affichage.afficherTour(actif.getNom());
 			affichage.afficherMainJoueur(actif);
-			
+
 			int indice = affichage.choisirCarte();
-			Carte carte=actif.getCarteMain(indice);
-			
-			if (carte.getType()==TypeCarte.ATTAQUE) {
+			Carte carte = actif.getCarteMain(indice);
+
+			if (carte.getType() == TypeCarte.ATTAQUE) {
 				affichage.carteAttaque(carte);
-			}else {
+			} else {
 				affichage.cartePopularite(carte);
 			}
-			jeu.jouerCarte(indice,actif,adversaire);
-			carte.appliquerEffet(actif,adversaire);
-			
-			jeu.piocherCarte(actif,indice);
+			jeu.jouerCarte(indice, actif, adversaire);
+			carte.appliquerEffet(actif, adversaire);
+
+			jeu.piocherCarte(actif, indice);
 			affichage.afficherCarte(actif.getCarteMain(indice));
-			
+
+			affichage.afficherEtatJeu(actif, adversaire);
+
 			if (jeu.partieTerminee()) {
 				break;
-			}else {
+			} else {
 				jeu.inverserJoueurs();
 			}
 		}
