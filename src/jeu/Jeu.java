@@ -1,6 +1,7 @@
 package jeu;
 
 import affichage.Affichage;
+import affichage.IAffichage;
 
 public class Jeu {
 	private Joueur joueur1;
@@ -9,11 +10,17 @@ public class Jeu {
 	private Joueur joueurActif;
 	private Joueur adversaire;
 	private Carte zoneAttaque;
+	private final IAffichage affichage;
+	
+	private static Affichage aff;
 
-	private static Affichage affichage;
+	
+	public Jeu(IAffichage affichage) {
+		this.affichage = affichage;
+	}
 
 	public static Affichage getAffichage() {
-		return affichage;
+		return aff;
 	}
 
 	public Joueur getJoueur1() {
@@ -91,6 +98,77 @@ public class Jeu {
 			return joueur1;
 		}
 		return null;
+	}
+	
+	public void jouer() {
+		affichage.afficherBienvenue();
+		String nomJoueur1 = affichage.demanderNomJoueur("1");
+		String nomJoueur2 = affichage.demanderNomJoueur("2");
+		initialiserJoueurs(nomJoueur1, nomJoueur2);
+		affichage.debutJeu();
+
+		while (!partieTerminee()) {
+
+			Joueur actif = getJoueurActif();
+			Joueur adversaire = getAdversaire();
+
+			affichage.afficherTour(actif.getNom());
+			affichage.afficherMainJoueur(actif);
+
+			int indice = affichage.choisirCarte();
+			Carte carte = actif.getCarteMain(indice);
+			
+			switch(carte.getType()) {
+			case TypeCarte.ATTAQUE : 
+				affichage.carteAttaque(carte);
+				carte.appliquerEffet(actif, adversaire);
+				jouerCarte(indice, actif, adversaire);
+				piocherCarte(actif, indice);
+				affichage.afficherCarte(actif.getCarteMain(indice));
+				break;
+			case TypeCarte.POPULARITE : 
+				affichage.cartePopularite(carte);
+				jouerCarte(indice, actif, adversaire);
+				piocherCarte(actif, indice);
+				affichage.afficherCarte(actif.getCarteMain(indice));
+				break;
+			case TypeCarte.ROULETTE : 
+				affichage.carteRoulette(carte);
+				carte.appliquerEffet(actif, adversaire);
+				if (adversaire.getVie()<=0) {
+					affichage.carteRouletteTouchee(adversaire);
+				}
+				else if (actif.getVie()<=0) {
+					affichage.carteRouletteTouchee(actif);
+				}
+				else {
+					affichage.carteRouletteManquee();
+				}
+				jouerCarte(indice, actif, adversaire);
+				piocherCarte(actif, indice);
+				affichage.afficherCarte(actif.getCarteMain(indice));
+				break;
+			
+			case TypeCarte.ECHANGE : 
+				int indiceEchange= carte.getEffet();
+				jouerCarte(indice, actif, adversaire);
+				piocherCarte(actif, indice);
+				affichage.carteEchange(indiceEchange,carte,actif,adversaire);
+				carte.appliquerEffet(actif, adversaire);
+			default :
+				break;
+				
+			}
+
+			affichage.afficherEtatJeu(actif, adversaire);
+
+			if (partieTerminee()) {
+				break;
+			} else {
+				inverserJoueurs();
+			}
+		}
+		affichage.vainqueur(vainqueur());
 	}
 
 }

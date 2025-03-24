@@ -23,7 +23,7 @@ public class Affichage implements IAffichage {
 	}
 
 	public void debutJeu() {
-		System.out.println("\nDébut du jeu !");
+		System.out.println("\nDï¿½but du jeu !");
 	}
 
 	public void afficherMainJoueur(Joueur joueur) {
@@ -41,14 +41,14 @@ public class Affichage implements IAffichage {
 	public int choisirCarte() {
 		int choix = -1;
 		while (choix < 1 || choix > 5) {
-			System.out.print("\nChoisissez une carte (1-5) : ");
+			System.out.print("\nChoisissez une carte (1-5) :\n ");
 			if (scanner.hasNextInt()) {
 				choix = scanner.nextInt();
 				if (choix < 1 || choix > 5) {
 					System.out.println("Choix invalide, veuillez entrer un nombre entre 1 et 5.");
 				}
 			} else {
-				System.out.println("Entrée invalide, veuillez entrer un nombre.");
+				System.out.println("Entrï¿½e invalide, veuillez entrer un nombre.");
 				scanner.next();
 			}
 		}
@@ -57,12 +57,12 @@ public class Affichage implements IAffichage {
 
 	public void cartePopularite(Carte carte) {
 		System.out.println("Vous avez choisi la carte " + carte.getNom() + " : " + carte.getDescription()
-				+ ". Votre popularité à  augmenté de " + carte.getEffet() + "\n");
+				+ ". Votre popularitï¿½ ï¿½ augmentï¿½ de " + carte.getEffet() + "\n");
 	}
 
 	public void carteAttaque(Carte carte) {
 		System.out.println("Vous avez choisi la carte " + carte.getNom() + " : " + carte.getDescription()
-				+ ". Votre popularité à  augmenté de ;" + carte.getEffet() + "\n");
+				+ ". Votre popularitï¿½ ï¿½ augmentï¿½ de ;" + carte.getEffet() + "\n");
 	}
 
 	public void afficherEtatJeu(Joueur joueur1, Joueur joueur2) {
@@ -72,13 +72,30 @@ public class Affichage implements IAffichage {
 		System.out.println(joueur2.getNom() + " : Vie : " + joueur2.getVie() + " points de vie, Popularite : "
 				+ joueur2.getPopularite() + " points de popularite\n");
 	}
+	
+	public void carteRoulette(Carte carte) {
+		System.out.println("Vous avez choisi la carte " + carte.getNom() + " : " + carte.getDescription());
+	}
+	
+	public void carteRouletteTouchee(Joueur joueur) {
+		System.out.println("\nLe joueur "+joueur.getNom()+" a perdu au jeu de la Roulette ! \n ");
+	}
+	
+	public void carteRouletteManquee() {
+		System.out.println("\nAucun joueur n'a perdu, le jeu continue\n");
+	}
+	
+	public void carteEchange(int indice,Carte carte,Joueur actif,Joueur adversaire) {
+		System.out.println("\nVous avez choisi la carte " + carte.getNom() + " : " + carte.getDescription()+
+				"\nVous avez Ã©changÃ© la carte "+actif.getNomCarteMain(indice)+" contre la carte "+adversaire.getNomCarteMain(indice)+" de votre adversaire\n");
+	}
 
 	public void vainqueur(Joueur joueur) {
-		System.out.println("Fin du jeu, vainqueur : " + joueur.getNom());
+		System.out.println("\nFin du jeu, vainqueur : " + joueur.getNom());
 	}
 
 	public void afficherCarte(Carte carte) {
-		System.out.println("Vous avez pioché la carte " + carte.getNom() + " : " + carte.getDescription());
+		System.out.println("Vous avez piochï¿½ la carte " + carte.getNom() + " : " + carte.getDescription());
 	}
 
 	public static void main(String[] args) {

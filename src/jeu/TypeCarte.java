@@ -1,5 +1,5 @@
 package jeu;
 
 public enum TypeCarte {
-	ATTAQUE,POPULARITE;
+	ATTAQUE,POPULARITE,ROULETTE,ECHANGE;
 }

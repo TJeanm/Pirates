@@ -7,8 +7,7 @@ import jeu.Jeu;
 public class Start {
 	public static void main(String[] args) {
 		IAffichage affichage = new Affichage();
-		Jeu jeu = new Jeu();
-		Lanceur lancement = new Lanceur(affichage, jeu);
-		lancement.debut();
+		Jeu jeu = new Jeu(affichage);
+		jeu.jouer();
 	}
 }
